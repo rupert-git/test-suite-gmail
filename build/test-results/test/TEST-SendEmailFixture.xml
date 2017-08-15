@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SendEmailFixture" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-08-05T23:04:29" hostname="Ruperts-MacBook-Air.local" time="78.749">
+  <properties/>
+  <testcase name="send email" classname="SendEmailFixture" time="78.749"/>
+  <system-out><![CDATA[
+file:///Users/rupert/workspace/test-suite-gmail/build/reports/spec/SendEmail.html#send email
+Successes: 5, Failures: 0
+
+file:///Users/rupert/workspace/test-suite-gmail/build/reports/spec/SendEmail.html
+Successes: 5, Failures: 0
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 34120
+Only local connections are allowed.
+Aug 06, 2017 11:04:30 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 43768
+Only local connections are allowed.
+Aug 06, 2017 11:04:46 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 4215
+Only local connections are allowed.
+Aug 06, 2017 11:05:03 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 16383
+Only local connections are allowed.
+Aug 06, 2017 11:05:18 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 41115
+Only local connections are allowed.
+Aug 06, 2017 11:05:33 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+]]></system-err>
+</testsuite>

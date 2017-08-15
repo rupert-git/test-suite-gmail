@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'Quickstart'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "org.concordion:concordion:2.1.0"
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version:'3.4.0'
+    compile 'com.google.api-client:google-api-client:1.22.0'
+    compile 'com.google.oauth-client:google-oauth-client-jetty:1.22.0'
+    compile 'com.google.apis:google-api-services-gmail:v1-rev68-1.22.0'
+    //compile 'javax.mail.internet'
+}
+
+test {
+    systemProperties['concordion.output.dir'] = "$reporting.baseDir/spec"
+    testLogging.showStandardStreams = true
+    outputs.upToDateWhen { false }
+
+    //run only the Send Email test for now
+    include '**/SendEmailFixture.*'
+}

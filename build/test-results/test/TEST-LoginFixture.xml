@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LoginFixture" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-07-28T01:32:54" hostname="Ruperts-MacBook-Air.local" time="9.027">
+  <properties/>
+  <testcase name="valid login test" classname="LoginFixture" time="9.027"/>
+  <system-out><![CDATA[
+file:///Users/rupert/workspace/test-suite-gmail/build/reports/spec/Login.html#valid login test
+Successes: 1, Failures: 0
+
+file:///Users/rupert/workspace/test-suite-gmail/build/reports/spec/Login.html
+Successes: 1, Failures: 0
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b) on port 12198
+Only local connections are allowed.
+Jul 28, 2017 1:32:57 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+]]></system-err>
+</testsuite>
