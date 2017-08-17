@@ -23,12 +23,12 @@
            <th>Email body</th>
            <th>Outcome message</th>
          </tr>
-         <tr>
+         <!--<tr>
            <td concordion:set="#to">validAddress@mailinator.com</td>
            <td concordion:set="#subject">Test subject</td>
            <td concordion:set="#body">Test email body</td>
            <td concordion:assert-equals="sendEmail(#to,#subject,#body,#TEXT)">Your message has been sent</td>
-         </tr>
+         </tr>-->
          <tr>
            <td concordion:set="#to">invalidAddress</td>
            <td concordion:set="#subject">Test subject</td>
@@ -41,7 +41,7 @@
            <td concordion:set="#body">Test email body</td>
            <td concordion:assert-equals="sendEmail(#to,#subject,#body,#TEXT)">Please specify at least one recipient</td>
          </tr>
-         <tr>
+         <!--<tr>
            <td concordion:set="#to">validAddress@mailinator.com</td>
            <td concordion:set="#subject"></td>
            <td concordion:set="#body">Test email body</td>
@@ -52,7 +52,7 @@
            <td concordion:set="#subject">Test subject</td>
            <td concordion:set="#body"></td>
            <td concordion:assert-equals="sendEmail(#to,#subject,#body,#TEXT)">Your message has been sent</td>
-         </tr>
+         </tr>-->
        </table>
    </div>
 

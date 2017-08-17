@@ -18,9 +18,20 @@ import org.openqa.selenium.Keys;
 
 public class SendEmailFixture{
 
-  public String login(WebDriver driver){
+  public WebDriver driver;
+
+  public WebDriver getDriver() {
+    if (driver == null){
+      driver = new ChromeDriver();
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+    return driver;
+  }
+
+  public String login(){
     String msg = "Successfully logged in - reached inbox";
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    driver = this.getDriver();
+
     driver.get("https://mail.google.com");
     driver.findElement(By.cssSelector("input[type=email]")).sendKeys("sbe.automation@gmail.com");
     driver.findElement(By.cssSelector("div[role=button]")).click();
@@ -47,16 +58,25 @@ public class SendEmailFixture{
 
   public String sendEmail(String to, String subject, String body, String outcomeMessage){
     String returnValue = "";
+    if (driver == null) {
+      login();
+    }
+    driver = this.getDriver();
+    //driver.get("https://mail.google.com");
 
-    //log in
-    WebDriver driver = new ChromeDriver();
-    login(driver);
+    //wait until compose button is clickable
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    try {
+      wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[gh=cm]")));
+    } catch (TimeoutException timeout) {
+      driver.close();
+      returnValue = "Compose button not clickable";
+    }
 
     //click compose button
     driver.findElement(By.cssSelector("div[gh=cm]")).click();
 
-    //wait for compose screen to show up
-    WebDriverWait wait = new WebDriverWait(driver, 10);
+    //wait for compose screen to show up (wait until we can type something in the "to" box)
     try {
       wait.until(ExpectedConditions.presenceOfElementLocated(By.name("to")));
     } catch (TimeoutException timeout) {
@@ -85,7 +105,18 @@ public class SendEmailFixture{
       returnValue = "Couldn't find the specified outcome message";
     }
 
-    driver.close();
+    //if there is an alert, close the alert dialog and close the email compose screen
+    if(driver.findElements(By.name("ok")).size() != 0) {
+      driver.findElement(By.name("ok")).click();
+      try {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[aria-label='Message Body']")));
+        driver.findElement(By.cssSelector("div[aria-label='Message Body']")).sendKeys(Keys.ESCAPE);
+      } catch (TimeoutException timeout) {
+        returnValue = "Couldn't close email compose screen";
+      }
+    }
+
+    //driver.close();
     return returnValue;
   }
 }
