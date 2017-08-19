@@ -109,8 +109,8 @@ public class SendEmailFixture{
     if(driver.findElements(By.name("ok")).size() != 0) {
       driver.findElement(By.name("ok")).click();
       try {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[aria-label='Message Body']")));
-        driver.findElement(By.cssSelector("div[aria-label='Message Body']")).sendKeys(Keys.ESCAPE);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='Kj-JD-Jz']")));
+        driver.findElement(By.cssSelector("div[class='Kj-JD-Jz']")).click();
       } catch (TimeoutException timeout) {
         returnValue = "Couldn't close email compose screen";
       }
@@ -118,5 +118,21 @@ public class SendEmailFixture{
 
     //driver.close();
     return returnValue;
+  }
+
+  public String sendEmailWithAddress(String to, String outcomeMessage) {
+    return sendEmail(to,"test subject","test email body",outcomeMessage);
+  }
+
+  public String noToAddress(String outcomeMessage) {
+    return sendEmail("","test subject","test email body",outcomeMessage);
+  }
+
+  public String noSubject(String outcomeMessage){
+    return sendEmail("validaddress@mailinator.com", "", "test email body", outcomeMessage);
+  }
+
+  public String noEmailBody(String outcomeMessage){
+    return sendEmail("validaddress@mailinator.com", "test subject", "", outcomeMessage);
   }
 }
