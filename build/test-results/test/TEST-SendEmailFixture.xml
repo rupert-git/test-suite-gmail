@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SendEmailFixture" tests="1" skipped="0" failures="1" errors="0" timestamp="2017-08-17T22:45:40" hostname="Ruperts-MacBook-Air.local" time="27.304">
+<testsuite name="SendEmailFixture" tests="1" skipped="0" failures="1" errors="0" timestamp="2017-08-20T08:15:42" hostname="Ruperts-MacBook-Air.local" time="18.438">
   <properties/>
-  <testcase name="send email" classname="SendEmailFixture" time="27.304">
+  <testcase name="warning shown" classname="SendEmailFixture" time="18.438">
     <failure message="org.concordion.internal.ConcordionAssertionError: Specification has exception(s). See output HTML for details." type="org.concordion.internal.ConcordionAssertionError">org.concordion.internal.ConcordionAssertionError: Specification has exception(s). See output HTML for details.
 	at org.concordion.internal.ImplementationStatusChecker$3.assertIsSatisfied(ImplementationStatusChecker.java:104)
 	at org.concordion.internal.SummarizingResultRecorder.assertIsSatisfied(SummarizingResultRecorder.java:45)
@@ -53,15 +53,15 @@
 </failure>
   </testcase>
   <system-out><![CDATA[
-file:///Users/rupert/workspace/test-suite-gmail/build/reports/spec/SendEmail.html#send email
+file:///Users/rupert/workspace/test-suite-gmail/build/reports/spec/SendEmail.html#warning shown
 Successes: 1, Failures: 0, Exceptions: 1
 
 file:///Users/rupert/workspace/test-suite-gmail/build/reports/spec/SendEmail.html
 Successes: 1, Failures: 0, Exceptions: 1
 ]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 2.31.488774 (7e15618d1bf16df8bf0ecf2914ed1964a387ba0b) on port 13989
+  <system-err><![CDATA[Starting ChromeDriver 2.31.488774 (7e15618d1bf16df8bf0ecf2914ed1964a387ba0b) on port 11875
 Only local connections are allowed.
-Aug 18, 2017 10:45:42 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+Aug 20, 2017 8:15:43 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: OSS
 ]]></system-err>
 </testsuite>

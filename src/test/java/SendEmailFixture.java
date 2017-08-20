@@ -40,7 +40,7 @@ public class SendEmailFixture{
     if (driver.findElements(By.id("passwordNext")).size() != 0) {
       driver.findElement(By.id("passwordNext")).click();
     } else {
-      driver.findElement(By.xpath(".//div[contains(text(), 'NEXT')]")).click();
+      driver.findElement(By.xpath(".//span[contains(text(), 'NEXT')]")).click();
     }
 
     //wait for inbox to load
@@ -62,7 +62,6 @@ public class SendEmailFixture{
       login();
     }
     driver = this.getDriver();
-    //driver.get("https://mail.google.com");
 
     //wait until compose button is clickable
     WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -105,6 +104,14 @@ public class SendEmailFixture{
       returnValue = "Couldn't find the specified outcome message";
     }
 
+    return returnValue;
+  }
+
+  public String closeAlert(){
+    String returnValue = "";
+    driver = this.getDriver();
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+
     //if there is an alert, close the alert dialog and close the email compose screen
     if(driver.findElements(By.name("ok")).size() != 0) {
       driver.findElement(By.name("ok")).click();
@@ -115,8 +122,6 @@ public class SendEmailFixture{
         returnValue = "Couldn't close email compose screen";
       }
     }
-
-    //driver.close();
     return returnValue;
   }
 
@@ -125,7 +130,21 @@ public class SendEmailFixture{
   }
 
   public String noToAddress(String outcomeMessage) {
-    return sendEmail("","test subject","test email body",outcomeMessage);
+    String returnValue1 = sendEmail("","test subject","test email body",outcomeMessage);
+    String returnValue2 = closeAlert();
+    if(returnValue2 == ""){
+      return returnValue1;
+    }
+    return returnValue2;
+  }
+
+  public String invalidToAddress(String to, String outcomeMessage) {
+    String returnValue1 = sendEmail(to,"test subject","test email body",outcomeMessage);
+    String returnValue2 = closeAlert();
+    if(returnValue2 == ""){
+      return returnValue1;
+    }
+    return returnValue2;
   }
 
   public String noSubject(String outcomeMessage){

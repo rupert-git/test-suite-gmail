@@ -10,7 +10,7 @@
 
    <p>As a gmail user, I want to be able to send emails, so that I can communicate with others.</p>
 
-   <div concordion:example="send email successfully">
+   <!--<div concordion:example="send email successfully">
      <h3>Example - successful send</h3>
 
      <p>Given that I am logged into my gmail account, when I send an email with the following conditions, then I should be shown an outcome message indicating that my email has been sent.</p>
@@ -34,7 +34,7 @@
        </tr>
      </table>
 
-   </div>
+   </div>-->
 
    <div concordion:example="warning shown">
      <h3>Example - warning shown</h3>
@@ -48,7 +48,7 @@
          </tr>
          <tr>
            <td>Invalid recipient provided (<span concordion:set="#to">invalidAddress</span>)</td>
-           <td concordion:assert-equals="sendEmailWithAddress(#to,#TEXT)">Please make sure that all addresses are properly formed</td>
+           <td concordion:assert-equals="invalidToAddress(#to,#TEXT)">Please make sure that all addresses are properly formed</td>
          </tr>
          <tr>
            <td>No recipient provided</td>
