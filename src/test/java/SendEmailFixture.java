@@ -23,7 +23,7 @@ public class SendEmailFixture{
   public WebDriver getDriver() {
     if (driver == null){
       driver = new ChromeDriver();
-      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
     return driver;
   }
@@ -109,8 +109,8 @@ public class SendEmailFixture{
     if(driver.findElements(By.name("ok")).size() != 0) {
       driver.findElement(By.name("ok")).click();
       try {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[class='Kj-JD-Jz']")));
-        driver.findElement(By.cssSelector("div[class='Kj-JD-Jz']")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[aria-label='Discard draft']")));
+        driver.findElement(By.cssSelector("div[aria-label='Discard draft']")).click();
       } catch (TimeoutException timeout) {
         returnValue = "Couldn't close email compose screen";
       }
