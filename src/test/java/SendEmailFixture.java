@@ -129,12 +129,20 @@ public class SendEmailFixture{
     //get back to inbox
     driver.get("http://www.gmail.com");
     //check for alert (navigate way) and accept
-      try {
-        driver.switchTo().alert().accept();
-      }
-        catch (NoAlertPresentException e) {
-          returnValue = "no alert to close";
-      }
+    try {
+      driver.switchTo().alert().accept();
+    }
+      catch (NoAlertPresentException e) {
+        returnValue = "no alert to close";
+    }
+
+    //get back to inbox
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    try {
+      wait.until(ExpectedConditions.titleContains("Inbox"));
+    } catch (TimeoutException timeout) {
+      returnValue = "Didn't get to Inbox";
+    }
 
     return returnValue;
   }
