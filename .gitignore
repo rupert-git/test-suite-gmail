@@ -1,0 +1,9 @@
+# gradle build files to ignore #
+################################
+.gradle/*
+build/classes/*
+build/resources/*
+build/test-results/*
+build/tmp*
+gradle/*
+gradlew*
