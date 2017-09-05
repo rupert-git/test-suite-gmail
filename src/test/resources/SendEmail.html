@@ -6,14 +6,33 @@
 
 <body>
 
-   <h1>Send email</h1>
+   <h1>Validation of basic email elements when composing an email</h1>
 
-   <p>As a gmail user, I want to be able to send emails, so that I can communicate with others.</p>
+   <div concordion:example="warning shown">
+     <h3>Example - warning shown</h3>
 
-   <!--<div concordion:example="send email successfully">
+     <p>When composing an email message some basic address validation should occur. This warns the user if they are about to send an email with no recipients, or a badly formed recepient address.</p>
+
+       <table>
+         <tr>
+           <th>Condition</th>
+           <th>Outcome message</th>
+         </tr>
+         <tr>
+           <td>Invalid recipient provided (<span concordion:set="#to">invalidAddress</span>)</td>
+           <td concordion:assert-equals="invalidToAddress(#to,#TEXT)">Please make sure that all addresses are properly formed</td>
+         </tr>
+         <tr>
+           <td>No recipient provided</td>
+           <td concordion:assert-equals="noToAddress(#TEXT)">Please specify at least one recipient</td>
+         </tr>
+       </table>
+   </div>
+
+   <div concordion:example="send email successfully">
      <h3>Example - successful send</h3>
 
-     <p>Given that I am logged into my gmail account, when I send an email with the following conditions, then I should be shown an outcome message indicating that my email has been sent.</p>
+     <p>Following on from the example above, if recipients are provided correctly then the email should send successfully, even if the email subject or email body are left blank.</p>
 
      <table>
        <tr>
@@ -34,27 +53,6 @@
        </tr>
      </table>
 
-   </div>-->
-
-   <div concordion:example="warning shown">
-     <h3>Example - warning shown</h3>
-
-     <p>Given that I am logged into my gmail account, when I send an email without providing a valid recipient, then I should be shown a warning pop up.</p>
-
-       <table>
-         <tr>
-           <th>Condition</th>
-           <th>Outcome message</th>
-         </tr>
-         <tr>
-           <td>Invalid recipient provided (<span concordion:set="#to">invalidAddress</span>)</td>
-           <td concordion:assert-equals="invalidToAddress(#to,#TEXT)">Please make sure that all addresses are properly formed</td>
-         </tr>
-         <tr>
-           <td>No recipient provided</td>
-           <td concordion:assert-equals="noToAddress(#TEXT)">Please specify at least one recipient</td>
-         </tr>
-       </table>
    </div>
 
 </body>
