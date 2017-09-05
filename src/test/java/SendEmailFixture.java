@@ -111,22 +111,8 @@ public class SendEmailFixture{
   public String closeAlert(){
     String returnValue = "";
     driver = this.getDriver();
-    /*WebDriverWait wait = new WebDriverWait(driver, 10);
-    //close the alert dialog and close the email compose screen
-    try {
-      driver.switchTo().alert().accept();
-      try {
-        WebElement discard = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[aria-label='Discard draft']")));
-        discard.click();
-      } catch (TimeoutException timeout) {
-        returnValue = "Couldn't close email compose screen";
-      }
-    }
-    catch (NoAlertPresentException e) {
-      returnValue = "Couldn't close alert";
-    }*/
 
-    //get back to inbox
+    //refresh page
     driver.get("http://www.gmail.com");
     //check for alert (navigate way) and accept
     try {
