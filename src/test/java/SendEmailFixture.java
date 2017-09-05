@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.Keys;
 
 
@@ -110,20 +111,35 @@ public class SendEmailFixture{
   public String closeAlert(){
     String returnValue = "";
     driver = this.getDriver();
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-
-    //if there is an alert, close the alert dialog and close the email compose screen
-    if(driver.findElements(By.name("ok")).size() != 0) {
-      driver.findElement(By.name("ok")).click();
+    /*WebDriverWait wait = new WebDriverWait(driver, 10);
+    //close the alert dialog and close the email compose screen
+    try {
+      driver.switchTo().alert().accept();
       try {
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[aria-label='Discard draft']")));
-        driver.findElement(By.cssSelector("div[aria-label='Discard draft']")).click();
+        WebElement discard = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[aria-label='Discard draft']")));
+        discard.click();
       } catch (TimeoutException timeout) {
         returnValue = "Couldn't close email compose screen";
       }
     }
+    catch (NoAlertPresentException e) {
+      returnValue = "Couldn't close alert";
+    }*/
+
+    //get back to inbox
+    driver.get("http://www.gmail.com");
+    //check for alert (navigate way) and accept
+      try {
+        driver.switchTo().alert().accept();
+      }
+        catch (NoAlertPresentException e) {
+          returnValue = "no alert to close";
+      }
+
     return returnValue;
   }
+
+
 
   public String sendEmailWithAddress(String to, String outcomeMessage) {
     return sendEmail(to,"test subject","test email body",outcomeMessage);
@@ -134,8 +150,9 @@ public class SendEmailFixture{
     String returnValue2 = closeAlert();
     if(returnValue2 == ""){
       return returnValue1;
+    } else {
+      return returnValue2;
     }
-    return returnValue2;
   }
 
   public String invalidToAddress(String to, String outcomeMessage) {
@@ -143,8 +160,9 @@ public class SendEmailFixture{
     String returnValue2 = closeAlert();
     if(returnValue2 == ""){
       return returnValue1;
+    } else {
+      return returnValue2;
     }
-    return returnValue2;
   }
 
   public String noSubject(String outcomeMessage){
